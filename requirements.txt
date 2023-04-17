@@ -17,3 +17,7 @@ pypdf
 requests
 pandas
 sklearn
+google-search-results
+bs4
+pinecone-client
+streamlit_chat
