@@ -24,7 +24,6 @@ if st.button("Message Test"):
         "content": f"You are a {age}, {gender}, {race}, {geography} person voting in 2024."
                    f"How would you respond to this candidate's speech, GIVEN YOUR DEMOGRAPHICS?"
                    f"What do you like about it, and what would you improve?"
-                   f"What probability do you have of voting for them?"
     }]
     summary = chat(speech, messages=sys, model="gpt-4", max_tokens=500)
     st.write(summary)
