@@ -69,6 +69,7 @@ if st.session_state['personalize']:
     types = st.selectbox('Type:', ('Fundraising', 'Volunteer', 'Event', 'Other'))
     if tabs == 'Other' or types == 'Other':
         tabs = st.text_input("Details:")
+        types = tabs
 
     # Generate button
     if st.button("Generate"):
