@@ -3,12 +3,13 @@ import streamlit as st
 from util.util import chat
 
 st.header("Message Tester")
-st.markdown(
+st.markdown("Crafting the perfect message is essential for engaging voters and promoting your campaign. Our Message Testing Bot helps you refine your messaging by testing how different demographics might respond.")
+st.markdown("\nNOTE: this is an experimental feature, and cannot provide an accurate account of how voters might respond.")
 
 speech = st.text_area("Speech:")
 col1, col2, col3, col4 = st.columns(4)
 with col1:
-    age = st.selectbox("Age", ("Young adult (20-34 years)", "Adult (35-64 years)", "Senior (65+ years)"))
+    age = st.selectbox("Age", ("Young adult", "Adult", "Senior"))
 with col2:
     gender = st.selectbox("Gender", ("Male", "Female", "Other"))
 with col3:
