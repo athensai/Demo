@@ -1,5 +1,3 @@
-from census import Census
-from us import states
 from datetime import date, timedelta
 from serpapi import GoogleSearch
 from bs4 import BeautifulSoup
