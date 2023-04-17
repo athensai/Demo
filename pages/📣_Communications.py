@@ -54,12 +54,12 @@ if st.session_state['personalize']:
     for result in results['organic_results']:
         link = result['link']
         text = scrape(link)
-        if len(text) < 4000:
-            title = result['title']
-            snippet = result['snippet']
-            summary = chat(text + q, max_tokens=200)
-            summaries.append(summary)
-            st.write(summary)
+        if len(text) > 2000:
+                text = text[:2000]
+                last_period_index = text.rfind('.')
+                text = text[:last_period_index + 1]
+        summary = chat(text + q, max_tokens=200)
+        summaries.append(summary)
 
     all = ", ".join(summary for summary in summaries)
     meta = chat(all + q, max_tokens=200)
@@ -77,7 +77,6 @@ if st.session_state['personalize']:
 
 # Display output if the Generate button has been clicked
 if st.session_state['generate'] and not st.session_state['generated']:
-    st.write(meta)
     output = chat(
         f"Generate an engaging, long, and unrepetitive {tabs} for {types} in the perspective of candidate. Use this "
         f"info, if relevant {meta}.")
