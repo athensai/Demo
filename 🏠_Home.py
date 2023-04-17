@@ -21,10 +21,13 @@ Athens AI offers a suite of powerful AI tools designed to help local Democratic 
 Here's what our app can do for you:
 
 ### 1. Personalized Communication Tool
-**Why it's important:** Crafting personalized communications, such as emails and press releases, can be time-consuming and challenging. Our AI tool generates tailored content that resonates with your target audience, streamlining your communication efforts.
+**Why it's useful:** Crafting personalized communications, such as emails and press releases, can be time-consuming and challenging. Our AI tool generates tailored content that resonates with your target audience, streamlining your communication efforts.
 
 ### 2. Opposition Research Tool
 **Why it's useful:** Researching opponents is a critical part of any campaign, but it can be difficult to stay updated on their activities. Our tool automatically gathers information from Google News and Twitter, keeping you informed about your opponents' actions and statements.
 
 ### 3. FEC Chatbot
-**Why it's important:** Navigating election finance laws can be complex and confusing. Our FEC Chatbot is here to help by answering your questions about election finance regulations, ensuring your campaign stays compliant and avoids""")
+**Why it's useful:** Navigating election finance laws can be complex and confusing. Our FEC Chatbot is here to help by answering your questions about election finance regulations, ensuring your campaign stays compliant and avoids
+
+### 4. Message Testing
+**Why it's useful:** Crafting the perfect message is essential for engaging voters and promoting your campaign. Our Message Testing Bot helps you refine your messaging by analyzing the impact and effectiveness of your content. With real-time feedback, you can optimize your communication strategy and ensure your message resonates with your target audience.""")
