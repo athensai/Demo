@@ -9,14 +9,14 @@ st.set_page_config(
 )
 
 
-st.title("Athens AI: AI-Powered Solutions for Local Democratic Candidates")
+st.title("AthensAI: Democratizing AI for Local Candidates")
 
 st.markdown("""
 ## The Problem
 Local Democratic candidates often face significant challenges when it comes to staffing and funding their campaigns. With limited resources, they struggle to effectively communicate with constituents, research opponents, navigate complex election finance laws, and refine their messaging.
 
-## Our Solution: Athens AI App
-Athens AI offers a suite of powerful AI tools designed to help local Democratic candidates save time and money, allowing them to focus on what matters most - connecting with voters and winning elections.
+## Our Solution: AthensAI
+AthensAI offers a suite of powerful AI tools designed to help local Democratic candidates save time and money, allowing them to focus on what matters most - connecting with voters and winning elections.
 
 Here's what our app can do for you:
 
