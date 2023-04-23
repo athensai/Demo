@@ -32,7 +32,6 @@ def embedding(text, model="text-embedding-ada-002"):
     text = text.replace("\n", " ")
     return openai.Embedding.create(input=[text], model=model)['data'][0]['embedding']
 
-@st.cache_data
 def search(q, location="United States", news=False, time="w", n=8):
     params = {
         "q": q,
