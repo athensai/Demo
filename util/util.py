@@ -10,7 +10,6 @@ import requests
 
 #c = Census(st.secrets("CENSUS_API_KEY"))
 
-@st.cache_data
 def chat(content, messages=[], model="gpt-3.5-turbo", max_tokens=None, role="user") -> str:
     openai.api_key = st.secrets["OPENAI_API_KEY"]
     message = {
