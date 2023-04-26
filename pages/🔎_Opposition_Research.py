@@ -25,7 +25,7 @@ st.markdown("\n\nOur bot not only keeps you updated on your opponent's activitie
             "develop potential **attack points** and **counter messaging**. This ensures that your "
             "campaign is always prepared to respond and adapt to the dynamic political environment.")
 st.markdown("\n\nIn the future, we hope to add other data sources, including fundraising data, to give a more "
-            "comprehensive picture of your opponent's activities.")
+            "comprehensive picture of your opponent's activities .")
 
 name = st.text_input("Opponent Name")
 twitter = st.text_input("Opponent Twitter Handle").strip("@").strip(" ")
