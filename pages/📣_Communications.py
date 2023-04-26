@@ -45,7 +45,7 @@ if st.button("Personalize"):
 if st.session_state['personalize']:
     if not st.session_state['generate']:
         st.write("Personalizing! This should take under a minute.")
-    results = search(name, n=4)
+    results = search(name, n=5)
     summaries = []
     q = "\nTell me about the candidate's biography, platform, " \
         "and main issues. Keep it concise but specific."
@@ -75,7 +75,7 @@ if st.session_state['personalize']:
 
 # Display output if the Generate button has been clicked
     if st.session_state['generate'] and not st.session_state['made']:
-        prompt = f"Make an engaging, long, and unrepetitive political {tabs} as candidate. Use this info: {meta}."
+        prompt = f"Make an engaging, long, and unrepetitive political call to action {tabs} as candidate. Use this info: {meta}."
         # Make sure the prompt does not exceed the maximum token limit
         if len(prompt) > 4096:
             prompt = prompt[:4093] + '...'
