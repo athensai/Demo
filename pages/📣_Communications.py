@@ -66,10 +66,8 @@ if st.session_state['personalize']:
 
     # Create a tab selection
     tabs = st.selectbox('Medium:', ('Email', 'Social Media', 'Press Release', 'Other'))
-    types = st.selectbox('Type:', ('Fundraising', 'Volunteer', 'Event', 'Other'))
-    if tabs == 'Other' or types == 'Other':
+    if tabs == 'Other':
         tabs = st.text_input("Details:")
-        types = tabs
 
     # Generate button
     if st.button("Generate"):
@@ -77,7 +75,7 @@ if st.session_state['personalize']:
 
 # Display output if the Generate button has been clicked
     if st.session_state['generate'] and not st.session_state['made']:
-        prompt = f"Generate an engaging, long, and unrepetitive {tabs} for {types} in the perspective of candidate. Use this info, if relevant: {meta}."
+        prompt = f"Make an engaging, long, and unrepetitive political {tabs} as candidate. Use this info: {meta}."
         # Make sure the prompt does not exceed the maximum token limit
         if len(prompt) > 4096:
             prompt = prompt[:4093] + '...'
