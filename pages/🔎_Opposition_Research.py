@@ -88,7 +88,7 @@ if st.session_state['search']:
         for result in results['news_results']:
             link = result['link']
             text = scrape(link)
-            abridged = text[:2000]
+            abridged = text[:1500]
             last_period_index = abridged.rfind('.')
             abridged = abridged[:last_period_index + 1]
             title = result['title']
@@ -111,12 +111,14 @@ if st.session_state['search']:
             tweets = tweets[:2000]
             last_line_index = tweets.rfind('\n')
             tweets = tweets[:last_line_index + 1]
-        tweets = "\n".join(df['Text'])[:1000]
+        tweets = "\n".join(df['Text'])[:800]
         st.subheader("Tweet Analysis")
-        tweet_summary = chat(f"You are a Democratic opposition research bot. Write a research report of the following "
-                             f"tweets by {twitter}. Find anything controversial"
-                             f" or useful to attack them on. Mention specific tweets and Devise a counter-messaging "
-                             f"strategy. {tweets}. \nMARKDOWN TEXT:", model="gpt-4")
+        prompt = f"You are a Democratic opposition research bot. Write a research report of the following "\
+         f"tweets by {twitter}. Find anything controversial or useful to attack them on. Mention specific "\
+         f"tweets and Devise a counter-messaging strategy. {tweets}. \nMARKDOWN TEXT:"
+        if len(prompt) > 4096:
+            prompt = prompt[:4093] + '...'
+        tweet_summary = chat(prompt, model="gpt-4")
 
     st.markdown(tweet_summary)
     csv = convert_df(df)
