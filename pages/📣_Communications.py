@@ -54,8 +54,8 @@ if st.session_state['personalize']:
     for result in results['organic_results']:
         link = result['link']
         text = scrape(link)
-        if len(text) > 2000:
-                text = text[:2000]
+        if len(text) > 1500:
+                text = text[:1500]
                 last_period_index = text.rfind('.')
                 text = text[:last_period_index + 1]
         summary = chat(text + q, max_tokens=200)
@@ -76,11 +76,13 @@ if st.session_state['personalize']:
         st.session_state['generate'] = True
 
 # Display output if the Generate button has been clicked
-if st.session_state['generate'] and not st.session_state['generated']:
-    output = chat(
-        f"Generate an engaging, long, and unrepetitive {tabs} for {types} in the perspective of candidate. Use this "
-        f"info, if relevant {meta}.")
-    st.session_state['made'] = True
+    if st.session_state['generate'] and not st.session_state['made']:
+        prompt = f"Generate an engaging, long, and unrepetitive {tabs} for {types} in the perspective of candidate. Use this info, if relevant: {meta}."
+        # Make sure the prompt does not exceed the maximum token limit
+        if len(prompt) > 4096:
+            prompt = prompt[:4093] + '...'
+        output = chat(prompt)
+        st.session_state['made'] = True
 
-if st.session_state['made']:
-    st.write(output)
+    if st.session_state['made']:
+        st.write(output)
