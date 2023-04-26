@@ -45,7 +45,7 @@ if st.button("Personalize"):
 if st.session_state['personalize']:
     if not st.session_state['generate']:
         st.write("Personalizing! This should take under a minute.")
-    results = search(name)
+    results = search(name, n=4)
     summaries = []
     q = "\nTell me about the candidate's biography, platform, " \
         "and main issues. Keep it concise but specific."
