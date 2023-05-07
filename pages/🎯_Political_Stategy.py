@@ -1,8 +1,9 @@
 import requests
 import streamlit as st
 from util.util import chat
-import time
-import threading
+import requests
+from collections import defaultdict
+
 
 
 selected_variables = [
@@ -42,19 +43,56 @@ state_fips_codes = {
     'VA': '51', 'WA': '53', 'WV': '54', 'WI': '55', 'WY': '56'
 }
 
+def fetch_county_fips_codes(state_fips_codes):
+    county_fips_codes = {}
+    base_url = "https://www2.census.gov/geo/docs/reference/codes/files/"
+
+    for state, state_code in state_fips_codes.items():
+        url = f"{base_url}st{state_code}_{state.lower()}_cou.txt"
+        response = requests.get(url)
+
+        if response.status_code == 200:
+            lines = response.text.splitlines()
+            for line in lines:
+                values = line.split(',')
+                county_code = values[2]
+                county_name = values[3]
+                county_key = f"{county_name}, {state}"
+                county_fips_codes[county_key] = (state_code, county_code)
+
+    return county_fips_codes
+
+county_fips_codes = fetch_county_fips_codes(state_fips_codes)
+
+def counties_by_state_dict(county_fips_codes):
+    counties_by_state = defaultdict(list)
+    for county_key, _ in county_fips_codes.items():
+        county_name, state = county_key.split(', ')
+        counties_by_state[state].append(county_name)
+    return counties_by_state
+
+# Call the new function to create the dictionary
+counties_by_state = counties_by_state_dict(county_fips_codes)
+
+
 state = st.selectbox("State", list(state_fips_codes.keys()))
-county = st.text_input("County FIPS Code (optional)", "")
+county = st.selectbox("County Name", [""] + sorted(counties_by_state[state]))
 
 
 if st.button("Generate Political Campaign"):
     #st.write("Generating Political Campaign! This can take up to 2 minutes.")
-    state_code = state_fips_codes[state]
-    acs_data = fetch_acs_data(state_code, api_key, county_code=county)
+    if county:
+        state_code, county_code = county_fips_codes[f"{county}, {state}"]
+    else:
+        county_code = None
+    acs_data = fetch_acs_data(state_code, api_key, county_code=county_code)
+    
     data = dict(zip(acs_data[0], acs_data[1]))
     sys = [{
         "role": "system",
         "content": f"Using the following information about a user's location, generate a detailed political campaign." 
-        "Make sure to reference specific statistics and facts and be as thorough and specific as possible:"
+        "Make sure to reference specific statistics and facts and be as thorough and specific as possible. Do not give generic"
+        "responses."
         ""
                    f"\n\nState: {data['NAME']}\n\nPopulation:"
                    f"\nTotal Population: {data['B01001_001E']}\nMale Population: {data['B01001_002E']}\nFemale Population: {data['B01001_026E']}"
@@ -79,7 +117,7 @@ if st.button("Generate Political Campaign"):
                    f"\n\nHousehold Type:"
                    f"\nTotal households: {data['B11001_001E']}\nFamily households: {data['B11001_002E']}\nNon-family households: {data['B11001_007E']}"
     }]
-    campaign = chat("", messages=sys, model="gpt-4", max_tokens=500)
+    campaign = chat("", messages=sys, model="gpt-4", max_tokens=1000)
     st.write(campaign)
     
 
