@@ -17,6 +17,7 @@ selected_variables = [
         'B27001_007E', 'B11001_001E', 'B11001_002E', 'B11001_007E'
 ]
 
+@st.cache_data
 def fetch_acs_data(state_code, api_key, county_code=None):
     variables = ','.join(selected_variables)
 
@@ -43,6 +44,7 @@ state_fips_codes = {
     'VA': '51', 'WA': '53', 'WV': '54', 'WI': '55', 'WY': '56'
 }
 
+@st.cache_data
 def fetch_county_fips_codes(state_fips_codes):
     county_fips_codes = {}
     base_url = "https://www2.census.gov/geo/docs/reference/codes/files/"
@@ -64,6 +66,7 @@ def fetch_county_fips_codes(state_fips_codes):
 
 county_fips_codes = fetch_county_fips_codes(state_fips_codes)
 
+@st.cache_data
 def counties_by_state_dict(county_fips_codes):
     counties_by_state = defaultdict(list)
     for county_key, _ in county_fips_codes.items():
