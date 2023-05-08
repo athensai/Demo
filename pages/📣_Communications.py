@@ -62,7 +62,7 @@ if st.session_state['personalize']:
         summaries.append(summary)
 
     all = ", ".join(summary for summary in summaries)
-    meta = chat(all + q, max_tokens=200)
+    meta = chat(all + q, max_tokens=1000)
 
     # Create a tab selection
     tabs = st.selectbox('Medium:', ('Email', 'Social Media', 'Press Release', 'Other'))
