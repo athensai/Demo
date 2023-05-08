@@ -15,5 +15,5 @@ if st.button("Generate"):
         "Include 10 participants, make them diverse in geography, partisanship, gender, race, age, and occupation, and describe them briefly."
         "BE REALISTIC. Some of the people should be critical and disagree. Do not make it fake or overly positive. Markdown:" 
     }]
-    transcript = chat(speech, messages=sys, model="gpt-4", max_tokens=1000)
+    transcript = chat(speech, messages=sys, model="gpt-4", max_tokens=500)
     st.write(transcript)
