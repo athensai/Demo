@@ -93,7 +93,7 @@ if st.button("Generate Political Campaign"):
         "content": f"Using the Census information below, generate a political strategy report for a "
         "Democrat running in the district (messaging advice, outreach plans, etc.). BE SPECIFIC and CITE THE FACTS." 
         "Think about the trade-offs, and what each demographic is likely to support. Remember, be aware of how each "
-        "demographic intersects with others. For example, minorities might be more likely to support tax increases overall, 
+        "demographic intersects with others. For example, minorities might be more likely to support tax increases overall,"
         "but if the district is rich, they might not. Give complex recommendations and CITE THE STATS. Markdown:"
         ""
                    f"\n\nState: {data['NAME']}\n\nPopulation:"
