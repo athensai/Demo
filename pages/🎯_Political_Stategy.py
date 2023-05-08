@@ -90,9 +90,11 @@ if st.button("Generate Political Campaign"):
     data = dict(zip(acs_data[0], acs_data[1]))
     sys = [{
         "role": "system",
-        "content": f"Using the following information about a user's location, generate a detailed political campaign." 
-        "Make sure to reference specific statistics and facts and be as thorough and specific as possible. Do not give generic"
-        "responses."
+        "content": f"Using the Census information below, generate a political strategy report for a "
+        "Democrat running in the district (messaging advice, outreach plans, etc.). BE SPECIFIC and CITE THE FACTS." 
+        "Think about the trade-offs, and what each demographic is likely to support. Remember, be aware of how each "
+        "demographic intersects with others. For example, minorities might be more likely to support tax increases overall, 
+        "but if the district is rich, they might not. Give complex recommendations and CITE THE STATS. Markdown:"
         ""
                    f"\n\nState: {data['NAME']}\n\nPopulation:"
                    f"\nTotal Population: {data['B01001_001E']}\nMale Population: {data['B01001_002E']}\nFemale Population: {data['B01001_026E']}"
