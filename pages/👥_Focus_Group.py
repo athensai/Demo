@@ -8,7 +8,7 @@ st.markdown("\nNOTE: this is an experimental feature, and cannot provide an accu
 
 speech = st.text_area("Text:")
 
-if st.button("Message Test"):
+if st.button("Generate"):
     sys = [{
         "role": "system",
         "content": "Simulate a long, American focus group transcript for the following candidate message." 
