@@ -32,6 +32,7 @@ def embedding(text, model="text-embedding-ada-002"):
     text = text.replace("\n", " ")
     return openai.Embedding.create(input=[text], model=model)['data'][0]['embedding']
 
+@st.cache_data
 def search(q, location="United States", news=False, time="w", n=8):
     params = {
         "q": q,
@@ -48,6 +49,7 @@ def search(q, location="United States", news=False, time="w", n=8):
     results = GoogleSearch(params)
     return results.get_dict()
 
+@st.cache_data
 def scrape(url):
     response = requests.get(url)
 
