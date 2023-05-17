@@ -101,7 +101,7 @@ if st.session_state['search']:
                 all = all[:last_period_index + 1]
         meta = chat("You are a Democratic opposition research bot. Use this information to write a research report of the "
                     "opponent's recent activities and key points to attack them on. Use quotes if possible, but DO NOT "
-                    "include footnotes. " + all + "MARKDOWN TEXT: ##", max_tokens=500, model="gpt-4")
+                    "include footnotes. " + all + "MARKDOWN TEXT (Use headers): ##", max_tokens=700, model="gpt-4")
     st.markdown(meta)
 
     with st.spinner(text="Generating Twitter report. This can take up to 2 minutes."):
@@ -115,7 +115,7 @@ if st.session_state['search']:
         st.subheader("Tweet Analysis")
         prompt = f"You are a Democratic opposition research bot. Write a research report of the following "\
          f"tweets by {twitter}. Find anything controversial or useful to attack them on. Mention specific "\
-         f"tweets and Devise a counter-messaging strategy. {tweets}. \nMARKDOWN TEXT:"
+         f"tweets and Devise a counter-messaging strategy. {tweets}. \nMARKDOWN TEXT (formatted pretty):"
         if len(prompt) > 4096:
             prompt = prompt[:4093] + '...'
         tweet_summary = chat(prompt, model="gpt-4")
