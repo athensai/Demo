@@ -19,7 +19,7 @@ from openai.embeddings_utils import get_embedding, cosine_similarity
 
 st.title("Opposition Research Bot")
 st.markdown("Candidates need to stay informed about their opponents' activities and messaging. We have developed an "
-            "**opposition research bot** that helps"
+            "**opposition research bot** that helps "
             "you track and analyze your opponent's activities in real-time using Google News and Twitter data.")
 st.markdown("\n\nOur bot not only keeps you updated on your opponent's activities but also helps "
             "develop potential **attack points** and **counter messaging**. This ensures that your "
